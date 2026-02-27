@@ -5,16 +5,16 @@ pipeline {
         AWS_SECRET_ACCESS_KEY = credentials('AWS_SECRET_ACCESS_KEY')
     }
     stages {
-        stage('Terraform Start') {
+        stage('Terraform Plan') {
             steps {
-                sh 'terraform init'
-                sh 'terraform validate'
-                sh 'terraform plan'
+                sh 'pwd; cd /usr/bin/terraform/; terraform init'
+                sh 'pwd; cd /usr/bin/terraform/; terraform validate'
+                sh 'pwd; cd /usr/bin/terraform/; terraform plan'
             }
         }
         stage('Terraform Apply') {
             steps {
-                sh 'terraform apply -auto-approve'
+                sh 'pwd; cd /usr/bin/terraform/; terraform apply -auto-approve'
             }
         }
     }
