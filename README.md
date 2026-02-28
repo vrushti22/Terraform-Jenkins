@@ -1,2 +1,2 @@
 # Terraform-Jenkins
-Here we create AWS architecture with EC2, S3 and RDS using Terraform and will upload one app on those instances using Jenkins.
+In this Repo I have created EC2 instance on AWS using Terraform and Jenkins. By integrating Jenkins with Terraform we can automate creation of Infrastructure.
