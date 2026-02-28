@@ -7,24 +7,19 @@ pipeline {
     stages {
         stage('checkout'){
             steps{
-                script{
-                    dir("terraform")
-                    {
-                        git "https://github.com/vrushti22/Terraform-Jenkins.git"
+                        git branch:main , url:"https://github.com/vrushti22/Terraform-Jenkins.git"
                     }
                 }
-            }
-        }
         stage('Terraform Plan') {
             steps {
-                sh 'pwd; cd terraform/; terraform init'
-                sh 'pwd; cd terraform/; terraform validate'
-                sh 'pwd; cd terraform/; terraform plan'
+                sh 'terraform init'
+                sh 'terraform validate'
+                sh 'terraform plan'
             }
         }
         stage('Terraform Apply') {
             steps {
-                sh 'pwd; cd terraform/; terraform apply -auto-approve'
+                sh 'terraform apply -auto-approve'
             }
         }
     }
