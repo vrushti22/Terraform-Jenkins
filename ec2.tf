@@ -60,7 +60,7 @@ resource "aws_security_group" "ec2_sg" {
 resource "aws_security_group" "endpoint_sg" {
   name        = "endpoint-sg"
   description = "Security group for VPC endpoints"
-  vpc_id      = aws_vpc.main.id
+  vpc_id      = aws_vpc.project_vpc.id
 
   ingress {
     description = "Allow HTTPS from VPC"
