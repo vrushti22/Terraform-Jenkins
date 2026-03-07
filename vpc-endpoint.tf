@@ -53,7 +53,7 @@ resource "aws_vpc_endpoint" "ssm_messages" {
 }
 
 resource "aws_vpc_endpoint" "ec2_messages" {
-  vpc_id            = aws_vpc.main.id
+  vpc_id            = aws_vpc.project_vpc.id
   service_name      = "com.amazonaws.us-east-1.ec2messages"
   vpc_endpoint_type = "Interface"
 
