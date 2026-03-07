@@ -23,12 +23,12 @@ resource "aws_vpc_endpoint" "ecr_dkr" {
 }
 
 resource "aws_vpc_endpoint" "s3" {
-  vpc_id       = aws_vpc.main.id
-  service_name = "com.amazonaws.us-east-1.s3"
+  vpc_id            = aws_vpc.project_vpc.id
+  service_name      = "com.amazonaws.us-east-1.s3"
   vpc_endpoint_type = "Gateway"
 
   route_table_ids = [
-    aws_route_table.private.id
+    aws_route_table.private_rt.id
   ]
 
   tags = {
@@ -37,12 +37,12 @@ resource "aws_vpc_endpoint" "s3" {
 }
 
 resource "aws_vpc_endpoint" "ssm_messages" {
-  vpc_id            = aws_vpc.main.id
+  vpc_id            = aws_vpc.project_vpc.id
   service_name      = "com.amazonaws.us-east-1.ssmmessages"
   vpc_endpoint_type = "Interface"
 
   subnet_ids = [
-    aws_subnet.private.id
+    aws_subnet.private_subnet.id
   ]
 
   security_group_ids = [
@@ -58,7 +58,7 @@ resource "aws_vpc_endpoint" "ec2_messages" {
   vpc_endpoint_type = "Interface"
 
   subnet_ids = [
-    aws_subnet.private.id
+    aws_subnet.private_subnet.id
   ]
 
   security_group_ids = [
