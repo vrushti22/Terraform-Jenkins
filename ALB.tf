@@ -4,6 +4,10 @@ resource "aws_lb" "app_lb" {
   load_balancer_type = "application"
   security_groups    = [aws_security_group.alb_sg.id]
   subnets            = [aws_subnet.public_subnet.id]
+
+   tags = {
+    Name = "app-lb"
+  }
 }
 
 //ALB target group
@@ -17,6 +21,10 @@ resource "aws_lb_target_group" "tg" {
   health_check {
     path = "/web"
   }
+
+   tags = {
+    Name = "alb-tg"
+  }
 }
 
 //load balanccer listener
@@ -29,6 +37,10 @@ resource "aws_lb_listener" "listener" {
   default_action {
     type             = "forward"
     target_group_arn = aws_lb_target_group.tg.arn
+  }
+
+   tags = {
+    Name = "alb-listner"
   }
 }
 
