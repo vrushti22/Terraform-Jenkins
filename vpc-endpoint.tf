@@ -8,6 +8,10 @@ resource "aws_vpc_endpoint" "ecr_api" {
   security_group_ids = [aws_security_group.ec2_sg.id]
 
   private_dns_enabled = true
+
+  tags = {
+    Name = "ecr-api"
+  }
 }
 
 resource "aws_vpc_endpoint" "ecr_dkr" {
@@ -20,6 +24,10 @@ resource "aws_vpc_endpoint" "ecr_dkr" {
   security_group_ids = [aws_security_group.ec2_sg.id]
 
   private_dns_enabled = true
+
+   tags = {
+    Name = "ecr-dkr"
+  }
 }
 
 resource "aws_vpc_endpoint" "s3" {
@@ -50,6 +58,10 @@ resource "aws_vpc_endpoint" "ssm_messages" {
   ]
 
   private_dns_enabled = true
+
+  tags = {
+    Name = "ssm-msg-endpoint"
+  }
 }
 
 resource "aws_vpc_endpoint" "ec2_messages" {
@@ -66,4 +78,8 @@ resource "aws_vpc_endpoint" "ec2_messages" {
   ]
 
   private_dns_enabled = true
+
+  tags = {
+    Name = "ec2-msg-ep"
+  }
 }
