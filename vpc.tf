@@ -31,12 +31,20 @@ resource "aws_subnet" "private_subnet" {
 
 resource "aws_internet_gateway" "igw" {
   vpc_id = aws_vpc.project_vpc.id
+
+   tags = {
+    Name = "project-igw"
+  }
 }
 
 //Public Route Table
 
 resource "aws_route_table" "public_rt" {
   vpc_id = aws_vpc.project_vpc.id
+
+   tags = {
+    Name = "public-rt"
+  }
 }
 
 resource "aws_route" "internet_route" {
@@ -54,6 +62,10 @@ resource "aws_route_table_association" "public_assoc" {
 
 resource "aws_route_table" "private_rt" {
   vpc_id = aws_vpc.project_vpc.id
+
+   tags = {
+    Name = "private-rt"
+  }
 }
 
 resource "aws_route_table_association" "private_assoc" {
